@@ -4,5 +4,6 @@ dist
 .rvmrc
 .ruby-version
 *.rbc
-koans/*
+# commenting out so I can version as I go
+# koans/*
 *~
