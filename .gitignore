@@ -7,3 +7,5 @@ dist
 # commenting out so I can version as I go
 # koans/*
 *~
+# tinisi custom
+.DS_Store
