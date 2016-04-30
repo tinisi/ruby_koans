@@ -1,9 +1,12 @@
 class GreedScorer
 
+  attr_accessor :number_of_non_scoring_dice
+
   def initialize(dice)
     @dice = dice
     @total_score = 0
     @debug = false
+    @number_of_non_scoring_dice = 0
   end
 
   def extract_run_of_three(sorted_dice)
@@ -78,6 +81,7 @@ class GreedScorer
   end
 
   def score_solos(sorted_dice)
+    number_remaining_dice = sorted_dice.length
     # loop over the solos
     # add to a return value 100 for 1's and 50 for 5's
     significant_solos = get_significant_solos(sorted_dice)
@@ -87,7 +91,10 @@ class GreedScorer
       elsif significant_solos[i] == 5
         @total_score += 50
       end
+      number_remaining_dice -= 1
     end
+
+    @number_of_non_scoring_dice = number_remaining_dice
 
     if @debug
       puts "in score_solos"

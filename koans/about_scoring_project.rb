@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 require 'pry'
-require './greed_scorer'
+require_relative 'greed_scorer'
 
 # Greed is a dice game where you roll up to five dice to accumulate
 # points.  The following "score" function will be used to calculate the
@@ -74,6 +74,13 @@ class AboutScoringProject < Neo::Koan
     assert_equal 1100, score([1,1,1,1])
     assert_equal 1200, score([1,1,1,1,1])
     assert_equal 1150, score([1,1,1,5,1])
+  end
+
+  def test_scorer_reports_number_of_non_scoring_dice
+    dice = [2,3,4,6]
+    scorer = GreedScorer.new(dice)
+    scorer.calculate_score()
+    assert_equal 4, scorer.number_of_non_scoring_dice
   end
 
 end
