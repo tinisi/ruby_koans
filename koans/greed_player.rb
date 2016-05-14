@@ -1,5 +1,6 @@
 require_relative 'dice_set'
 require_relative 'greed_scorer'
+require_relative 'greed_constants'
 
 class GreedPlayer
 
@@ -18,8 +19,14 @@ class GreedPlayer
   end
 
   def turn()
-    # roll and score, return score and number of remaining dice
-    return 1
+    turn_score = 0
+    scorer = GreedScorer.new(roll(5))
+    i = 0
+    while i <= RISK_ROLL_MAP[@risk_tolerance]
+      turn_score += scorer.calculate_score()
+      i += 1
+    end
+    turn_score
   end
 
 end

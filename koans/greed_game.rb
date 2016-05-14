@@ -15,8 +15,8 @@ class GreedGame
 
   # round
   #   loop over players array
-  #   for each player recurse until risk tolerence is achieved
+  #   for each player take a turn (until risk tolerence is achieved)
+  #     score doesn't start counting until one turn of 300
   #   set scores for each player
-  #   score doesn't start counting until one turn of 300
 
 end
