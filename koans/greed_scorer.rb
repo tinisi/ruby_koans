@@ -2,8 +2,8 @@ class GreedScorer
 
   attr_accessor :number_of_non_scoring_dice
 
-  def initialize(dice)
-    @dice = dice
+  def initialize()
+    @dice = []
     @total_score = 0
     @debug = false
     @number_of_non_scoring_dice = 0
@@ -102,7 +102,9 @@ class GreedScorer
     end
   end
 
-  def calculate_score()
+  def calculate_score(dice)
+
+    @dice = dice
 
     t_score = 0
 

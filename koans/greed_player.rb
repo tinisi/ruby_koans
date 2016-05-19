@@ -20,10 +20,11 @@ class GreedPlayer
 
   def turn()
     turn_score = 0
-    scorer = GreedScorer.new(roll(5))
+    scorer = GreedScorer.new()
     i = 1
     while i <= RISK_ROLL_MAP[@risk_tolerance]
-      turn_score += scorer.calculate_score()
+      dice = roll(5)
+      turn_score += scorer.calculate_score(dice)
       i += 1
       puts i
     end
