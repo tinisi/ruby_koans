@@ -11,22 +11,25 @@ class GreedPlayer
     @player_name = player_name
     @risk_tolerance = risk_tolerance
     @in_the_game = false
+    @dice = DiceSet.new
   end
 
   def roll(number_of_dice)
-    dice = DiceSet.new
-    dice.roll(number_of_dice)
-    return dice.values
+    @dice.roll(number_of_dice)
+    return @dice.values
   end
 
   def turn()
     turn_score = 0
     final_score = 0
+    num_remaining_dice = NUM_DICE
     scorer = GreedScorer.new()
     i = 1
     while i <= RISK_ROLL_MAP[@risk_tolerance]
-      dice = roll(5)
+      dice = roll(num_remaining_dice)
       turn_score += scorer.calculate_score(dice)
+      puts scorer.number_of_non_scoring_dice
+      num_remaining_dice = scorer.number_of_non_scoring_dice
       i += 1
       puts i
     end
