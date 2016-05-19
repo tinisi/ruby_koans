@@ -35,13 +35,15 @@ describe GreedPlayer do
     end
 
     it "rolls the dice an appropriate number of times based on their risk tolerance" do
-      expect_any_instance_of(DiceSet).to receive(:get_up_side).exactly(5).times
+      # expect_any_instance_of(DiceSet).to receive(:get_up_side).exactly(5).times
+      # expect_any_instance_of(DiceSet).to receive(:get_up_side).at_least(5).times.and_return(3)
+      expect_any_instance_of(Random).to receive(:rand).exactly(5).times
+
       player = GreedPlayer.new('', :low)
       player.turn()
       expect(RISK_ROLL_MAP[:low]).to eq(3)
     end
 
   end
-
 
 end
