@@ -11,8 +11,6 @@ describe GreedPlayer do
   end
 
   describe 'player' do
-    # before do
-    # end
 
     it "calls through to DiceSet when roll is called" do
       expect_any_instance_of(DiceSet).to receive(:get_up_side).exactly(4).times
@@ -29,16 +27,12 @@ describe GreedPlayer do
   end
 
   describe 'game play' do
-    before do
-    end
 
-    it "rolls the dice an appropriate number of times based on their risk tolerance" do
-      expect_any_instance_of(Random).to receive(:rand).at_least(1).times.and_return(2)
-      player = GreedPlayer.new('', :low)
+    it "rolls the dice an appropriate number of times per turn based on risk tolerance" do
+      player_risk_level = :low
+      expect_any_instance_of(DiceSet).to receive(:roll).exactly(RISK_ROLL_MAP[player_risk_level]).times.and_return(1)
+      player = GreedPlayer.new('', player_risk_level)
       score = player.turn()
-      puts 'xxxxxxx'
-      puts score
-      expect(RISK_ROLL_MAP[:low]).to eq(3)
     end
 
   end

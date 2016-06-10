@@ -28,10 +28,11 @@ class GreedPlayer
     while i <= RISK_ROLL_MAP[@risk_tolerance]
       dice = roll(num_remaining_dice)
       turn_score += scorer.calculate_score(dice)
-      puts scorer.number_of_non_scoring_dice
+      if @debug
+        puts scorer.number_of_non_scoring_dice
+      end
       num_remaining_dice = scorer.number_of_non_scoring_dice
       i += 1
-      puts i
     end
     if should_score_count(turn_score)
       final_score = turn_score
@@ -43,7 +44,7 @@ class GreedPlayer
 
   def should_score_count(score)
     score_should_count = false
-    if @in_the_game or score > 300
+    if @in_the_game or score > IN_THE_GAME_MIN
       @in_the_game = true
       score_should_count = true
     end
