@@ -32,7 +32,7 @@ require_relative 'greed_scorer'
 # Your goal is to write the score method.
 def score(dice)
   scorer = GreedScorer.new(dice)
-  scorer.calculate_score()
+  scorer.calculate_score
 end
 
 class AboutScoringProject < Neo::Koan
@@ -79,7 +79,7 @@ class AboutScoringProject < Neo::Koan
   def test_scorer_reports_number_of_non_scoring_dice
     dice = [2,3,4,6]
     scorer = GreedScorer.new(dice)
-    scorer.calculate_score()
+    scorer.calculate_score
     assert_equal 4, scorer.number_of_non_scoring_dice
   end
 

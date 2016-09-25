@@ -1,6 +1,6 @@
 class DiceSet
 
-  def initialize()
+  def initialize
     @debug = false
     @values = []
     # this seeds the random number generator (I think will be used in this class)
@@ -25,7 +25,7 @@ class DiceSet
 
   end
 
-  def get_up_side()
+  def get_up_side
     up = @random.rand(1..6)
     up
   end

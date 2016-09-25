@@ -19,11 +19,11 @@ class GreedPlayer
     return @dice.values
   end
 
-  def turn()
+  def turn
     turn_score = 0
     final_score = 0
     num_remaining_dice = NUM_DICE
-    scorer = GreedScorer.new()
+    scorer = GreedScorer.new
     i = 1
     while i <= RISK_ROLL_MAP[@risk_tolerance]
       dice = roll(num_remaining_dice)

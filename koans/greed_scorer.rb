@@ -2,7 +2,7 @@ class GreedScorer
 
   attr_accessor :number_of_non_scoring_dice
 
-  def initialize()
+  def initialize
     @debug = false
     @dice = []
     @total_score = 0
