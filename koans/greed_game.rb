@@ -1,6 +1,8 @@
+require_relative '../koans/greed_constants'
+
 class GreedGame
 
-  attr_accessor :player_1, :player_2
+  attr_accessor :player_1, :player_2, :player_1_score, :player_2_score
 
   def initialize(player_1, player_2)
     @debug = false
@@ -8,31 +10,30 @@ class GreedGame
     @player_2 = player_2
     @player_1_score = 0
     @player_2_score = 0
-    @players = [@player_1,@player_2]
   end
 
-  # play_game
-  #   entry point, calls a recursive function
-  #   stop recursing when 3000 is reached
+  # play rounds until we reach end condition
+  # (someone has more than WINNING_SCORE)
   def play_game
     while should_keep_playing
       round
     end
   end
 
-  # round
-  #   loop over players array
-  #   for each player take a turn
-  #   set scores for each player
+  # each player takes a turn, return early if player 1 reaches winning score
   def round
-    puts 'playing!'
+    @player_1_score += @player_1.turn
+    if not should_keep_playing
+      return
+    end
+    @player_2_score += @player_2.turn
   end
 
   private
 
   def should_keep_playing
     should_keep_playing = true
-    if ( @player_1_score >= 3000 || @player_2_score >= 3000 )
+    if @player_1_score >= WINNING_SCORE || @player_2_score >= WINNING_SCORE
       should_keep_playing = false
     end
     should_keep_playing
