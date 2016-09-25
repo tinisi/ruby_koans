@@ -3,9 +3,9 @@ class GreedScorer
   attr_accessor :number_of_non_scoring_dice
 
   def initialize()
+    @debug = false
     @dice = []
     @total_score = 0
-    @debug = false
     @number_of_non_scoring_dice = 0
   end
 
@@ -28,7 +28,6 @@ class GreedScorer
 
     if run_index
       sorted_dice.slice!(run_index-1,3)
-      foo = "faaa"
     end
 
     if run

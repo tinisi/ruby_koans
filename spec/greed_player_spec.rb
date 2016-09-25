@@ -30,9 +30,10 @@ describe GreedPlayer do
 
     it "rolls the dice an appropriate number of times per turn based on risk tolerance" do
       player_risk_level = :low
-      expect_any_instance_of(DiceSet).to receive(:roll).exactly(RISK_ROLL_MAP[player_risk_level]).times.and_return(1)
+      expect_any_instance_of(GreedPlayer).to receive(:roll).exactly(RISK_ROLL_MAP[player_risk_level]).times.and_return([1,2,3])
       player = GreedPlayer.new('', player_risk_level)
       score = player.turn()
+      expect(score).to eq(600)
     end
 
   end

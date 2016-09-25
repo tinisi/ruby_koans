@@ -29,6 +29,8 @@ class GreedPlayer
       dice = roll(num_remaining_dice)
       turn_score += scorer.calculate_score(dice)
       if @debug
+        puts 'in turn'
+        puts dice.inspect
         puts scorer.number_of_non_scoring_dice
       end
       num_remaining_dice = scorer.number_of_non_scoring_dice
