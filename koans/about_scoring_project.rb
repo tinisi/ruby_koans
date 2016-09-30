@@ -1,5 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
-require 'pry'
+# require 'pry'
 require_relative 'greed_scorer'
 
 # Greed is a dice game where you roll up to five dice to accumulate
@@ -31,8 +31,8 @@ require_relative 'greed_scorer'
 #
 # Your goal is to write the score method.
 def score(dice)
-  scorer = GreedScorer.new(dice)
-  scorer.calculate_score
+  scorer = GreedScorer.new()
+  scorer.calculate_score(dice)
 end
 
 class AboutScoringProject < Neo::Koan
@@ -78,8 +78,8 @@ class AboutScoringProject < Neo::Koan
 
   def test_scorer_reports_number_of_non_scoring_dice
     dice = [2,3,4,6]
-    scorer = GreedScorer.new(dice)
-    scorer.calculate_score
+    scorer = GreedScorer.new
+    scorer.calculate_score(dice)
     assert_equal 4, scorer.number_of_non_scoring_dice
   end
 
