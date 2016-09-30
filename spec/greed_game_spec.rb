@@ -1,8 +1,4 @@
 
-require_relative '../koans/greed_game'
-require_relative '../koans/greed_player'
-require_relative '../koans/greed_constants'
-
 describe GreedGame do
 
   it "can be initialized with two players" do
@@ -26,16 +22,17 @@ describe GreedGame do
     expect(game.player_2_score).to eq(4500)
   end
 
-  it "calls turn on each player" do
-    # allow_any_instance_of(GreedPlayer).to receive(:turn).and_return(2999)
-    player_1 = instance_double("GreedPlayer")
-    player_2 = instance_double("GreedPlayer")
-    allow(player_1).to receive(:turn).at_least(:once).and_return(2999)
-    allow(player_2).to receive(:turn).at_least(:once).and_return(2999)
+  it "calls turn on each player until one of them has a winning score" do
+    player_1 = instance_double(GreedPlayer)
+    player_2 = instance_double(GreedPlayer)
+    allow(player_1).to receive(:turn).at_least(:once).and_return(299)
+    allow(player_2).to receive(:turn).at_least(:once).and_return(299)
     game = GreedGame.new(player_1, player_2)
     game.play_game
-    expect(game.player_1).to have_received(:turn).exactly(2).times
-    expect(game.player_2).to have_received(:turn).exactly(1).times
+    # since player 1 goes first, they will win on the 11th turn
+    # player 2 should have a score of 2999...so close!
+    expect(game.player_1).to have_received(:turn).exactly(11).times
+    expect(game.player_2).to have_received(:turn).exactly(10).times
   end
 
 end

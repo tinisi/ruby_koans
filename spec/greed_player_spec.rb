@@ -1,7 +1,4 @@
 
-require_relative '../koans/greed_player'
-require_relative '../koans/greed_constants'
-
 describe GreedPlayer do
 
   it "can be initialized with a name and risk tolerance" do

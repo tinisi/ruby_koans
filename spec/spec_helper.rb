@@ -94,3 +94,8 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+# loading in all our classes in one place...
+require_relative '../koans/greed_game'
+require_relative '../koans/greed_player'
+require_relative '../koans/greed_constants'

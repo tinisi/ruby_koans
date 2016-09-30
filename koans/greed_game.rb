@@ -20,7 +20,8 @@ class GreedGame
     end
   end
 
-  # each player takes a turn, return early if player 1 reaches winning score
+  # each player takes a turn,
+  # return early if player 1 reaches winning score
   def round
     @player_1_score += @player_1.turn
     if not should_keep_playing
